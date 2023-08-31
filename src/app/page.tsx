@@ -4,40 +4,34 @@ import {
   LoginButton,
   LogoutButton,
   ProfileButton,
-  RegisterButton,
 } from "@/components/buttons.component";
 import { User } from "@/components/user.component";
 import { authOptions } from "@/lib/authOptions";
+import { Box, Typography } from "@mui/material";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
   return (
-    <main
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "70vh",
-      }}
+    <Box
+      component="main"
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      height={"100vh"}
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <Box display="flex" flexDirection="column">
         <LoginButton />
-        <hr />
         <LogoutButton />
-        <hr />
         <ProfileButton />
 
-        <h1>Server Session</h1>
+        <Typography component={"h3"} variant="h3">
+          Server Session
+        </Typography>
         <pre>{JSON.stringify(session)}</pre>
 
         <User />
-      </div>
-    </main>
+      </Box>
+    </Box>
   );
 }
