@@ -1,4 +1,5 @@
-import { NextAuthProvider } from "./providers";
+import { AppThemeProvider } from "@/providers/appThemeProvider";
+import { NextAuthProvider } from "@/providers/nextAuthProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,7 +14,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NextAuthProvider>{children}</NextAuthProvider>
+        <AppThemeProvider>
+          <NextAuthProvider>{children}</NextAuthProvider>
+        </AppThemeProvider>
       </body>
     </html>
   );
